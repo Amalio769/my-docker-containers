@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Folder database
-*/pgdata
+postgis-pgadmin4/data
