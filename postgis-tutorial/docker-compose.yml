@@ -3,7 +3,7 @@ services:
 
     postgis:
         image: postgis/postgis
-        container_name: postgis
+        container_name: postgis-1
         ports:
             - '5432:5432'
         environment:
@@ -15,14 +15,14 @@ services:
 
     pgadmin4:
         image: dpage/pgadmin4
-        container_name: pgadmin4
+        container_name: pgadmin4-1
         ports:
             - '5050:80'
         environment:
             PGADMIN_DEFAULT_EMAIL: admin@admin.com
             PGADMIN_DEFAULT_PASSWORD: root
         volumes:
-            - ./postgis-workshop:/pgadmin4/postgis-workshop
+            - ./postgis-workshop:/var/lib/pgadmin/storage/admin_admin.com
         links:
             - postgis
 

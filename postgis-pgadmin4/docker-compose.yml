@@ -1,27 +1,25 @@
 version: '3.1'
 services:
-
     postgis:
         image: postgis/postgis
-        container_name: postgis
+        container_name: postgres
         ports:
             - '5432:5432'
+            - '5433:5433'
         environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         volumes:
             - ./data:/var/lib/postgresql/data
-
     pgadmin4:
         image: dpage/pgadmin4
         container_name: pgadmin4
         ports:
             - '5050:80'
         environment:
-            PGADMIN_DEFAULT_EMAIL: admin@admin.com
-            PGADMIN_DEFAULT_PASSWORD: root
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
         links:
             - postgis
-
 volumes:
   postgis-data:
